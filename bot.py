@@ -1,36 +1,25 @@
-from telegram import Bot
+from telegram import Update, Bot
+from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 import asyncio
 
-# Reemplaza con tu token y tu ID de Telegram
-BOT_TOKEN = "7893913594:AAGRkpgC_SAcik_RyStLFPT6xHvABBr7PbE"
+# Reemplaza con tu token de bot
+BOT_TOKEN = "7893913594:AAGRkpGC_SAcik_RyStLFPT6xHvABBz7PbE"
 CHAT_ID = "5370010407"
 
-bot = Bot(token=BOT_TOKEN)
+# Función para responder al comando /start
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await context.bot.send_message(chat_id=update.effective_chat.id, text="El bot de Fetcher está activo")
 
-# Función asíncrona para enviar el mensaje
-async def send_message():
-    await bot.send_message(chat_id=CHAT_ID, text="El bot de Fetcher está activo")
+# Configurar el bot
+app = ApplicationBuilder().token(BOT_TOKEN).build()
+app.add_handler(CommandHandler("start", start))
 
-# Ejecutar la función asíncrona
-asyncio.run(send_message())
-from telegram import Bot
+# Ejecutar el bot
+async def main():
+    await app.run_polling()
 
-# Reemplaza con tu token y tu ID de Telegram
-BOT_TOKEN = "TU_TOKEN_DE_TELEGRAM"
-CHAT_ID = "TU_ID_DE_TELEGRAM"
+if __name__ == "__main__":
+    asyncio.run(main())
 
-bot = Bot(token=BOT_TOKEN)
 
-# Prueba enviando un mensaje
-bot.send_message(chat_id=CHAT_ID, text="El bot de Fetcher está activo")
-from telegram import Bot
-
-# Reemplaza con tu token y tu ID de Telegram
-BOT_TOKEN = "TU_TOKEN_DE_TELEGRAM"
-CHAT_ID = "TU_ID_DE_TELEGRAM"
-
-bot = Bot(token=BOT_TOKEN)
-
-# Prueba enviando un mensaje
-bot.send_message(chat_id=CHAT_ID, text="El bot de Fetcher está activo")
 
