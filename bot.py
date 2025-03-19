@@ -19,9 +19,21 @@ app.add_handler(CommandHandler("start", start))
 async def main():
     await app.run_polling()
 
+import asyncio
+
+async def main():
+    await app.run_polling()
+
 if __name__ == "__main__":
-    import asyncio
-    asyncio.run(main())
+    try:
+        asyncio.get_running_loop()
+        asyncio.create_task(main())  # Ejecutar sin bloquear el loop
+    except RuntimeError:
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        loop.run_until_complete(main())
+
+
 
 
 
