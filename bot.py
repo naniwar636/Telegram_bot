@@ -1,6 +1,7 @@
 from telegram import Update, Bot
 from telegram.ext import ApplicationBuilder, CommandHandler
 import asyncio
+# Actualización menor para forzar redeploy en Railway
 
 # Reemplaza con tu token de bot
 BOT_TOKEN = "7893913594:AAGRkpGC_SAcik_RyStLFPT6xHvABBz7PDE"
