@@ -1,5 +1,5 @@
-from telegram import Update, Bot
-from telegram.ext import ApplicationBuilder, CommandHandler
+from telegram import Update
+from telegram.ext import ApplicationBuilder, CommandHandler, CallbackContext
 import asyncio
 # Actualización menor para forzar redeploy en Railway
 
@@ -9,7 +9,8 @@ CHAT_ID = "5370010407"
 
 # Función para responder al comando /start
 async def start(update: Update, context):
-    await context.bot.send_message(chat_id=update.effective_chat.id, text="El bot de Fetcher está activo")
+    await context.bot.send_message(chat_id=update.effective_chat.id, text="¡Hola! Soy un bot de Telegram en Railway.")
+
 
 # Configurar el bot
 app = ApplicationBuilder().token(BOT_TOKEN).build()
